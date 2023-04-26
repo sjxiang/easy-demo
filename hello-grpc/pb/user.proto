@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "easy-demo/hello-grpc/pb";  // 生成在 xx 目录下
+
+package Business;
+
+
+service User {
+    rpc Get (UserRequest) returns (UserResponse);
+    rpc List (UserRequest) returns (stream UserResponse);
+    rpc sum (stream UserRequest) returns (UserResponse);
+}
+
+
+message UserRequest {
+    string name = 1;
+    uint32 age = 2;
+}
+
+message UserResponse {
+    string name = 1;
+    uint32 age = 2;
+}
